@@ -25,7 +25,7 @@ dotnet run --project Trabalho1DevWebNet.csproj --urls http://localhost:5080
 
 Troque SUA_SENHA pela senha do seu PostgreSQL apenas no terminal local. Não coloque a senha real nos arquivos enviados ao GitHub. A variável vale para essa sessão do PowerShell. O usuário do banco precisa de permissão para criar o banco e a tabela.
 
-Abra http://localhost:5080. A página inicial ainda não consulta pacientes. A migration está criada, mas precisa ser aplicada com o comando acima após configurar a conexão. A aplicação não altera o banco automaticamente ao iniciar.
+Abra http://localhost:5080. A página inicial ainda não consulta pacientes. Em uma nova instalação, aplique a migration com o comando acima após configurar a conexão. A aplicação não altera o banco automaticamente ao iniciar.
 
 ## Entendendo esta etapa
 
@@ -43,10 +43,9 @@ dotnet run --project Tests/Validacoes.csproj
 dotnet ef migrations has-pending-model-changes
 ```
 
-As verificações acima não precisam acessar o PostgreSQL. Elas não substituem a aplicação da migration e os testes de integração com o banco.
+As verificações acima não precisam acessar o PostgreSQL. A migration também foi aplicada no PostgreSQL local em 12/09/2026: banco trabalho_dev_web e tabela Pacientes criados. A listagem de migrations confirmou a aplicação. As operações de cadastro serão verificadas quando forem implementadas.
 
 ## Próximas etapas
 
-1. Aplicar a migration na conexão local configurada.
-2. Inserir pacientes iniciais com SeedingService.
-3. Criar as telas para listar, inserir, editar e remover pacientes.
+1. Inserir pacientes iniciais com SeedingService.
+2. Criar as telas para listar, inserir, editar e remover pacientes.
