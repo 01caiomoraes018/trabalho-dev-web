@@ -13,6 +13,7 @@ header {
 header a {
     color: white;
     text-decoration: none;
+    margin-right: 24px;
 }
 
 main {
@@ -20,4 +21,23 @@ main {
     margin: 30px auto;
     padding: 24px;
     background: white;
+}
+
+.tabela-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #eef2f6;
 }

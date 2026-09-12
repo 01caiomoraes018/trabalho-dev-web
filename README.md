@@ -11,6 +11,7 @@ Projeto em ASP.NET Core MVC, usando o cadastro de pacientes anterior como base.
 - AppDbContext com o conjunto Pacientes.
 - Migration CriarTabelaPacientes para criar a tabela no banco.
 - SeedingService para inserir dois pacientes de exemplo quando a tabela estiver vazia.
+- Listagem dos pacientes do banco, acessível pelo menu Pacientes.
 
 ## Executar
 
@@ -27,7 +28,7 @@ dotnet run --project Trabalho1DevWebNet.csproj --urls http://localhost:5080
 
 Troque SUA_SENHA pela senha do seu PostgreSQL apenas no terminal local. Não coloque a senha real nos arquivos enviados ao GitHub. A variável vale para essa sessão do PowerShell. O usuário do banco precisa de permissão para criar o banco e a tabela.
 
-Abra http://localhost:5080. A página inicial ainda não consulta pacientes. Em uma nova instalação, aplique a migration com o comando acima após configurar a conexão. A aplicação não aplica migrations automaticamente ao iniciar.
+Abra http://localhost:5080 e clique em Pacientes no menu, ou acesse http://localhost:5080/Pacientes. Em uma nova instalação, aplique a migration com o comando acima após configurar a conexão. A aplicação não aplica migrations automaticamente ao iniciar.
 
 No ambiente Development, a inicialização insere dois pacientes fictícios se a tabela estiver vazia. Se houver qualquer paciente, o seeding não adiciona nem altera registros. Se todos forem removidos, os exemplos serão inseridos novamente na próxima inicialização em Development. Em Production, o seeding não é executado.
 
@@ -43,6 +44,8 @@ Data/SeedingService.cs recebe o contexto pelo construtor. O método Popula usa A
 
 ## Verificações
 
+PacientesController consulta os pacientes ordenados por nome. A action Index envia a lista para Views/Pacientes/Index.cshtml, que usa foreach para montar a tabela. Se não houver pacientes, a página mostra uma mensagem.
+
 ```powershell
 dotnet build Trabalho1DevWebNet.csproj
 dotnet run --project Tests/Validacoes.csproj
@@ -55,5 +58,5 @@ As verificações acima não precisam acessar o PostgreSQL. A migration também 
 
 O seeding foi verificado no PostgreSQL local: tabela vazia antes da execução, dois pacientes após iniciar em Development e os mesmos dois após reiniciar. Em Production, os registros permaneceram inalterados. A página inicial respondeu normalmente nos três testes.
 
-1. Criar a listagem de pacientes.
-2. Criar as telas para inserir, editar e remover pacientes.
+1. Criar o formulário para inserir pacientes.
+2. Criar as telas para editar e remover pacientes.

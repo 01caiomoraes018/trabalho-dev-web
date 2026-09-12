@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header><a asp-controller="Home" asp-action="Index">Agendamento</a></header>
+    <header>
+        <nav aria-label="Menu principal">
+            <a asp-controller="Home" asp-action="Index">Agendamento</a>
+            <a asp-controller="Pacientes" asp-action="Index">Pacientes</a>
+        </nav>
+    </header>
     <main>@RenderBody()</main>
 </body>
 </html>
