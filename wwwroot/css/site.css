@@ -41,3 +41,38 @@ th, td {
 th {
     background: #eef2f6;
 }
+
+.campo {
+    margin-bottom: 16px;
+    max-width: 500px;
+}
+
+.campo label, .campo input, .campo span {
+    display: block;
+}
+
+.campo input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #888;
+    border-radius: 4px;
+    font: inherit;
+}
+
+.erro {
+    color: #a82020;
+    margin-top: 4px;
+}
+
+button {
+    background: #244768;
+    color: white;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 4px;
+    margin-right: 16px;
+    font: inherit;
+    cursor: pointer;
+}

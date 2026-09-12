@@ -21,7 +21,7 @@ public class SeedingService
         // Dados fictícios usados apenas para demonstração.
         var paciente1 = new Paciente
         {
-            Nome = "Paciente Exemplo Um",
+            Nome = "Caio Moraes",
             Cpf = "529.982.247-25",
             Telefone = "(18) 99999-1111",
             Endereco = "Rua de Exemplo, 100",
