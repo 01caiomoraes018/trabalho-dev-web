@@ -14,6 +14,7 @@ Projeto em ASP.NET Core MVC, usando o cadastro de pacientes anterior como base.
 - Listagem dos pacientes do banco, acessível pelo menu Pacientes.
 - Formulário Novo paciente com validação no servidor e gravação no banco.
 - Edição de pacientes pelo link Editar na listagem, com formulário preenchido e validação.
+- Exclusão pelo link Excluir, com confirmação antes de remover o paciente.
 
 ## Executar
 
@@ -52,6 +53,8 @@ Um dos exemplos se chama Caio Moraes, com CPF, telefone, endereço e nascimento 
 
 O link Editar abre os dados do paciente pelo ID. Ao salvar, a action Edit confere o ID e ModelState, atualiza os campos e retorna à lista. Cancelar volta à listagem sem salvar. Registros inexistentes retornam 404.
 
+O link Excluir abre uma página com os dados do paciente. Apenas o POST de Confirmar exclusão remove o registro; o formulário inclui token antifalsificação. Cancelar volta à lista sem alterar o banco. Se o paciente não existir, a aplicação retorna 404.
+
 ## Verificações
 
 ```powershell
@@ -68,7 +71,9 @@ O cadastro foi testado por HTTP com PostgreSQL: dados válidos foram salvos e re
 
 A edição foi testada por HTTP com PostgreSQL: alteração dos cinco campos mantendo o ID, formulário preenchido, cancelamento, campos inválidos sem mudança no banco, ID divergente e envio sem token recusados, além de registro inexistente. O registro temporário foi removido e os pacientes anteriores foram preservados.
 
+A exclusão foi testada por HTTP com PostgreSQL usando um paciente temporário. Abrir a confirmação e cancelar preservaram os dados; confirmar removeu apenas esse paciente. Envios sem token ou com token inválido foram recusados e IDs inexistentes retornaram 404. Os pacientes anteriores foram preservados.
+
 ## Próximas etapas
 
-1. Criar a confirmação e a remoção de pacientes.
-2. Revisar o CRUD completo e as instruções de execução.
+1. Revisar navegação, mensagens e apresentação das telas.
+2. Conferir o CRUD completo, os requisitos do trabalho e as instruções de execução.

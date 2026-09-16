@@ -66,6 +66,22 @@ th {
     margin-top: 4px;
 }
 
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin: 4px 0 16px;
+}
+
+td a {
+    margin-right: 8px;
+}
+
+.botao-excluir {
+    background: #a82020;
+}
+
 button {
     background: #244768;
     color: white;

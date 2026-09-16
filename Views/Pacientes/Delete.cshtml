@@ -1,0 +1,26 @@
+@model Paciente
+
+@{
+    ViewData["Title"] = "Excluir paciente";
+}
+
+<h1>Excluir paciente</h1>
+<p>Confirma a exclusão deste paciente? Esta ação não pode ser desfeita.</p>
+
+<dl>
+    <dt>Nome</dt>
+    <dd>@Model.Nome</dd>
+    <dt>CPF</dt>
+    <dd>@Model.Cpf</dd>
+    <dt>Telefone</dt>
+    <dd>@Model.Telefone</dd>
+    <dt>Endereço</dt>
+    <dd>@Model.Endereco</dd>
+    <dt>Data de nascimento</dt>
+    <dd>@Model.DataNascimento.ToString("dd/MM/yyyy")</dd>
+</dl>
+
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+    <button type="submit" class="botao-excluir">Confirmar exclusão</button>
+    <a asp-action="Index">Cancelar</a>
+</form>

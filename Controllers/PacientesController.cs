@@ -26,6 +26,33 @@ public class PacientesController : Controller
     }
 
     [HttpGet]
+    public IActionResult Delete(int id)
+    {
+        var paciente = _context.Pacientes.Find(id);
+        if (paciente == null)
+        {
+            return NotFound();
+        }
+
+        return View(paciente);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public IActionResult DeleteConfirmed([FromRoute] int id)
+    {
+        var paciente = _context.Pacientes.Find(id);
+        if (paciente == null)
+        {
+            return NotFound();
+        }
+
+        _context.Pacientes.Remove(paciente);
+        _context.SaveChanges();
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet]
     public IActionResult Edit(int id)
     {
         var paciente = _context.Pacientes.Find(id);
