@@ -38,4 +38,8 @@ O CPF acima é usado apenas para testar o algoritmo de validação, sem consulta
 - ID inexistente: resposta 404; ID divergente na edição: resposta 400.
 - Após os testes, os pacientes que já existiam no banco foram preservados.
 
-A conferência automatizada verificou as respostas HTML e os dados no banco; a aparência em diferentes navegadores e tamanhos de tela ainda precisa de revisão visual.
+## Revisão visual
+
+Conferidas no navegador integrado as páginas inicial, listagem, cadastro, edição e confirmação de exclusão em 1280 × 800 e 375 × 812. Também foi conferida a mensagem de CPF inválido no cadastro em tela pequena, sem gravar o registro.
+
+A tabela mantém CPF, telefone, data e ações sem quebra de linha. Em tela pequena, a rolagem fica dentro da tabela, sem aumentar a largura da página. O CSS usa versão no endereço para evitar exibir estilos antigos após uma atualização. Outros navegadores e aparelhos físicos não foram testados nesta revisão.

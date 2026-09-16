@@ -29,7 +29,12 @@ main {
 
 table {
     width: 100%;
+    min-width: 850px;
     border-collapse: collapse;
+}
+
+td:nth-child(2), td:nth-child(3), td:nth-child(5), td:last-child {
+    white-space: nowrap;
 }
 
 th, td {
