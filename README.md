@@ -73,7 +73,8 @@ A edição foi testada por HTTP com PostgreSQL: alteração dos cinco campos man
 
 A exclusão foi testada por HTTP com PostgreSQL usando um paciente temporário. Abrir a confirmação e cancelar preservaram os dados; confirmar removeu apenas esse paciente. Envios sem token ou com token inválido foram recusados e IDs inexistentes retornaram 404. Os pacientes anteriores foram preservados.
 
-## Próximas etapas
+## Revisão do trabalho
 
-1. Revisar navegação, mensagens e apresentação das telas.
-2. Conferir o CRUD completo, os requisitos do trabalho e as instruções de execução.
+O fluxo completo foi conferido em 16/09/2026: cadastro, listagem, edição e exclusão de um paciente temporário, preservando os registros existentes. A página inicial agora oferece acesso direto à listagem.
+
+Veja [TESTES.md](TESTES.md) para a correspondência com os requisitos e um roteiro para testar e apresentar. Falta conferir visualmente as telas em diferentes tamanhos; os testes automatizados verificaram o HTML e o banco.
