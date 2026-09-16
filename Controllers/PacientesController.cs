@@ -25,6 +25,49 @@ public class PacientesController : Controller
         return View();
     }
 
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        var paciente = _context.Pacientes.Find(id);
+        if (paciente == null)
+        {
+            return NotFound();
+        }
+
+        return View(paciente);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Edit([FromRoute] int id,
+        [Bind("Id,Nome,Cpf,Telefone,Endereco,DataNascimento")] Paciente paciente)
+    {
+        if (id != paciente.Id)
+        {
+            return BadRequest();
+        }
+
+        var pacienteSalvo = _context.Pacientes.Find(id);
+        if (pacienteSalvo == null)
+        {
+            return NotFound();
+        }
+
+        if (!ModelState.IsValid)
+        {
+            return View(paciente);
+        }
+
+        pacienteSalvo.Nome = paciente.Nome;
+        pacienteSalvo.Cpf = paciente.Cpf;
+        pacienteSalvo.Telefone = paciente.Telefone;
+        pacienteSalvo.Endereco = paciente.Endereco;
+        pacienteSalvo.DataNascimento = paciente.DataNascimento;
+        _context.SaveChanges();
+
+        return RedirectToAction(nameof(Index));
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Create([Bind("Nome,Cpf,Telefone,Endereco,DataNascimento")] Paciente paciente)

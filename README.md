@@ -13,6 +13,7 @@ Projeto em ASP.NET Core MVC, usando o cadastro de pacientes anterior como base.
 - SeedingService para inserir dois pacientes de exemplo quando a tabela estiver vazia.
 - Listagem dos pacientes do banco, acessível pelo menu Pacientes.
 - Formulário Novo paciente com validação no servidor e gravação no banco.
+- Edição de pacientes pelo link Editar na listagem, com formulário preenchido e validação.
 
 ## Executar
 
@@ -49,6 +50,8 @@ O link Novo paciente abre o formulário. A action Create com GET mostra a págin
 
 Um dos exemplos se chama Caio Moraes, com CPF, telefone, endereço e nascimento apenas de demonstração. A alteração também foi feita no exemplo já existente no banco local; o seeding não renomeia registros existentes automaticamente.
 
+O link Editar abre os dados do paciente pelo ID. Ao salvar, a action Edit confere o ID e ModelState, atualiza os campos e retorna à lista. Cancelar volta à listagem sem salvar. Registros inexistentes retornam 404.
+
 ## Verificações
 
 ```powershell
@@ -57,13 +60,15 @@ dotnet run --project Tests/Validacoes.csproj
 dotnet ef migrations has-pending-model-changes
 ```
 
-As verificações acima não precisam acessar o PostgreSQL. A migration também foi aplicada no PostgreSQL local em 12/09/2026: banco trabalho_dev_web e tabela Pacientes criados. A listagem de migrations confirmou a aplicação. As operações de cadastro serão verificadas quando forem implementadas.
+As verificações acima não precisam acessar o PostgreSQL. A migration também foi aplicada no PostgreSQL local em 12/09/2026: banco trabalho_dev_web e tabela Pacientes criados. A listagem de migrations confirmou a aplicação.
 
 O seeding foi verificado no PostgreSQL local: tabela vazia antes da execução, dois pacientes após iniciar em Development e os mesmos dois após reiniciar. Em Production, os registros permaneceram inalterados. A página inicial respondeu normalmente nos três testes.
 
 O cadastro foi testado por HTTP com PostgreSQL: dados válidos foram salvos e retornaram à listagem; campos vazios, CPF inválido e data futura foram recusados. O registro temporário de teste foi removido.
 
+A edição foi testada por HTTP com PostgreSQL: alteração dos cinco campos mantendo o ID, formulário preenchido, cancelamento, campos inválidos sem mudança no banco, ID divergente e envio sem token recusados, além de registro inexistente. O registro temporário foi removido e os pacientes anteriores foram preservados.
+
 ## Próximas etapas
 
-1. Criar a edição de pacientes.
-2. Criar a confirmação e a remoção de pacientes.
+1. Criar a confirmação e a remoção de pacientes.
+2. Revisar o CRUD completo e as instruções de execução.
