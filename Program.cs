@@ -3,7 +3,13 @@ using Trabalho1DevWebNet.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
+        _ => "Este campo é obrigatório.");
+    options.ModelBindingMessageProvider.SetAttemptedValueIsInvalidAccessor(
+        (_, campo) => $"Informe um valor válido para {campo}.");
+});
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<SeedingService>();
