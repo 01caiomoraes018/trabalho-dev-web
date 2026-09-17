@@ -43,3 +43,11 @@ O CPF acima é usado apenas para testar o algoritmo de validação, sem consulta
 Conferidas no navegador integrado as páginas inicial, listagem, cadastro, edição e confirmação de exclusão em 1280 × 800 e 375 × 812. Também foi conferida a mensagem de CPF inválido no cadastro em tela pequena, sem gravar o registro.
 
 A tabela mantém CPF, telefone, data e ações sem quebra de linha. Em tela pequena, a rolagem fica dentro da tabela, sem aumentar a largura da página. O CSS usa versão no endereço para evitar exibir estilos antigos após uma atualização. Outros navegadores e aparelhos físicos não foram testados nesta revisão.
+
+## Conferência final - 17/09/2026
+
+Uma cópia limpa do projeto, sem bin e obj, foi restaurada e compilada com os pacotes disponíveis na máquina: nenhum erro ou aviso. As 18 verificações de validação passaram e o EF Core não encontrou diferenças entre o modelo e a migration.
+
+Nessa cópia, foram repetidos os testes HTTP de cadastro, edição e fluxo completo de criação até exclusão no PostgreSQL local, incluindo dados inválidos, cancelamento, IDs inexistentes e token antifalsificação. Todos passaram; os registros temporários foram removidos e os pacientes anteriores foram preservados.
+
+Para executar em outra máquina, extraia o projeto e siga o README: instale os requisitos, restaure os pacotes, configure a conexão local e aplique a migration. O banco de dados e a senha pessoal não fazem parte da entrega.
