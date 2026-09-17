@@ -20,7 +20,18 @@ var casos = new (string Nome, Action<Paciente> Alterar, string? Campo)[]
     ("Nascimento hoje", p => p.DataNascimento = DateTime.Today, null),
     ("Nascimento padrão", p => p.DataNascimento = default, "DataNascimento"),
     ("Nome vazio", p => p.Nome = "", "Nome"),
-    ("Endereço vazio", p => p.Endereco = "", "Endereco")
+    ("Endereço vazio", p => p.Endereco = "", "Endereco"),
+    ("Nome abaixo do mínimo", p => p.Nome = "Ab", "Nome"),
+    ("Nome no mínimo", p => p.Nome = "Ana", null),
+    ("Nome no máximo", p => p.Nome = new string('A', 100), null),
+    ("Nome acima do máximo", p => p.Nome = new string('A', 101), "Nome"),
+    ("Nome somente espaços", p => p.Nome = "   ", "Nome"),
+    ("Endereço abaixo do mínimo", p => p.Endereco = "Rua", "Endereco"),
+    ("Endereço no mínimo", p => p.Endereco = "Rua A", null),
+    ("Endereço no máximo", p => p.Endereco = new string('A', 200), null),
+    ("Endereço acima do máximo", p => p.Endereco = new string('A', 201), "Endereco"),
+    ("Endereço somente espaços", p => p.Endereco = "     ", "Endereco"),
+    ("Telefone vazio", p => p.Telefone = "", "Telefone")
 };
 
 var falhas = 0;

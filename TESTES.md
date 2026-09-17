@@ -51,3 +51,9 @@ Uma cópia limpa do projeto, sem bin e obj, foi restaurada e compilada com os pa
 Nessa cópia, foram repetidos os testes HTTP de cadastro, edição e fluxo completo de criação até exclusão no PostgreSQL local, incluindo dados inválidos, cancelamento, IDs inexistentes e token antifalsificação. Todos passaram; os registros temporários foram removidos e os pacientes anteriores foram preservados.
 
 Para executar em outra máquina, extraia o projeto e siga o README: instale os requisitos, restaure os pacotes, configure a conexão local e aplique a migration. O banco de dados e a senha pessoal não fazem parte da entrega.
+
+## Verificações adicionais - 17/09/2026
+
+- Cadastro e edição compartilham os campos em Views/Pacientes/_Form.cshtml. Os dois fluxos foram retestados com PostgreSQL após essa mudança.
+- Mensagens de data vazia e valor de data inválido foram conferidas em português por HTTP, sem gravar dados inválidos.
+- A suíte de validação passou de 18 para 29 casos, incluindo nomes e endereços abaixo, dentro e acima dos limites, textos compostos apenas por espaços e telefone vazio. Os 29 casos passaram.
